@@ -118,6 +118,8 @@
   button.copy:active { opacity: 0.85; }
   button.copy[data-copied="1"] { background: var(--blue); }
 
+  .lbl { font-size: 13px; font-weight: 600; color: var(--blue); margin: 14px 0 6px; }
+  .steps { margin: 0 0 4px; padding-left: 20px; font-size: 14px; line-height: 1.6; color: var(--fg); }
   footer {
     margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line);
     font-size: 12.5px; color: var(--muted); line-height: 1.6;
@@ -132,14 +134,53 @@
   <header>
     <p class="eyebrow">Grupo Horizonte Educa Perú &middot; 30/09/2026</p>
     <h1>Prompts del taller de IA</h1>
-    <p>Los dos ejemplos en vivo de la sesión "Inteligencia Artificial aplicada a la Educación" — CETPRO UGEL 01, San Juan de Miraflores. Copia el prompt y pégalo en ChatGPT junto con tu sílabo adjunto.</p>
+    <p>Prompts y pasos de la sesión "Inteligencia Artificial aplicada a la Educación" — CETPRO UGEL 01, San Juan de Miraflores. Copia el prompt y pégalo en la herramienta indicada; en los ejemplos 1 y 2, adjunta también tu sílabo.</p>
   </header>
 
   <div class="legend">
     <span>R &mdash; Rol</span>
-    <span>I &mdash; Información</span>
+    <span>I &mdash; Interacción</span>
     <span>T &mdash; Tarea</span>
     <span>A &mdash; Adaptabilidad</span>
+  </div>
+
+  <div class="card">
+    <h2>Paso 1 &middot; ChatGPT: indicadores de logro y actividades</h2>
+    <p class="subt">Se generan desde el módulo formativo, con los datos escritos en el prompt (sin adjuntar archivo).</p>
+    <p class="lbl">Panadería y Pastelería (la IA propone los indicadores)</p>
+    <pre class="prompt" id="p0a"><b>Rol:</b> Actúa como especialista en diseño curricular de educación técnico-productiva (CETPRO), con experiencia en la familia productiva de Industria Alimentaria, Bebidas y Tabaco.
+
+<b>Interacción:</b> Datos del módulo. Módulo formativo: Acondicionamiento, Mezclado y Tratamientos Térmicos de Productos de Panadería y Pastelería. Unidad didáctica: Procesos de Reducción y Despacho de Materia Prima y Disposición de la Merma. Horas: 48 (1 crédito teórico + 1 crédito práctico). Pregúntame antes de responder si necesitas algún dato adicional.
+
+<b>Tarea:</b> Propón los indicadores de logro de la unidad didáctica y genera la tabla de Actividades de Aprendizaje (columnas: N°, Indicador de la capacidad, Actividades y contenidos, Recursos/materiales, Horas teoría, Horas práctica) siguiendo el formato oficial del sílabo CETPRO.
+
+<b>Adaptabilidad:</b> Usa lenguaje claro y técnico para docentes de CETPRO, presenta la tabla lista para copiar a Word y ajústala según mi retroalimentación.</pre>
+    <button class="copy" data-target="p0a">Copiar prompt</button>
+    <p class="lbl">Soporte Técnico (ejemplo de la diapositiva del método RITA)</p>
+    <pre class="prompt" id="p0b"><b>Rol:</b> Actúa como especialista en diseño curricular de educación técnico-productiva (CETPRO), con experiencia en la familia productiva de Tecnologías de la Información.
+
+<b>Interacción:</b> Datos del sílabo. Programa: Soporte Técnico y Operación de Centros de Cómputo. Módulo: Atención de incidentes y problemas de operatividad. Unidad didáctica: Herramientas de Oficina y Aplicaciones de Internet. Horas: 48 (1 crédito teórico + 2 prácticos). Pregúntame antes de responder si necesitas algún dato adicional.
+
+<b>Tarea:</b> Genera una tabla de Actividades de Aprendizaje (indicador, actividades y contenidos, recursos, horas de teoría y práctica) según el formato oficial del sílabo CETPRO.
+
+<b>Adaptabilidad:</b> Usa lenguaje claro y técnico para docentes de CETPRO, presenta la tabla lista para copiar a Word y ajústala según mi retroalimentación.</pre>
+    <button class="copy" data-target="p0b">Copiar prompt</button>
+  </div>
+
+  <div class="card">
+    <h2>Paso 2 &middot; NotebookLM: leer el sílabo como fuente</h2>
+    <p class="subt">NotebookLM cita la página del sílabo de donde toma cada dato, lo que da trazabilidad.</p>
+    <ol class="steps">
+      <li>Crear un notebook nuevo.</li>
+      <li>Subir el sílabo (PDF o Word) como fuente.</li>
+      <li>Escribir una de estas solicitudes en el chat del notebook.</li>
+    </ol>
+    <p class="lbl">Resumen por sesión</p>
+    <pre class="prompt" id="n1">Resume la sección de Actividades de Aprendizaje en una lista de objetivos por sesión.</pre>
+    <button class="copy" data-target="n1">Copiar prompt</button>
+    <p class="lbl">Preguntas guía</p>
+    <pre class="prompt" id="n2">Genera 5 preguntas guía para verificar si el sílabo cumple con los indicadores de logro de la capacidad.</pre>
+    <button class="copy" data-target="n2">Copiar prompt</button>
   </div>
 
   <div class="card">
@@ -147,11 +188,11 @@
     <p class="subt">Adjunta el sílabo del módulo en ChatGPT antes de enviar este prompt.</p>
     <pre class="prompt" id="p1"><b>Rol:</b> Actúa como especialista en diseño curricular de educación técnico-productiva (CETPRO), con experiencia en la familia productiva de Industria Alimentaria, Bebidas y Tabaco.
 
-<b>Información:</b> Te adjunto el sílabo del módulo "Acondicionamiento, Mezclado y Tratamientos Térmicos de Productos de Panadería y Pastelería". Lee el archivo y ubica, en la tabla de Actividades de Aprendizaje, la actividad "Practica elaboración de producto" (indicador C3I1).
+<b>Interacción:</b> Te adjunto el sílabo del módulo "Acondicionamiento, Mezclado y Tratamientos Térmicos de Productos de Panadería y Pastelería". Lee el archivo y ubica, en la tabla de Actividades de Aprendizaje, la actividad "Practica elaboración de producto" (indicador C3I1). Si el archivo no contiene algún dato necesario para que la ficha sea coherente con el indicador, pregúntamelo antes de entregar el resultado final.
 
 <b>Tarea:</b> Genera la Ficha de Actividad completa para esa sesión (objetivo de aprendizaje, materiales/insumos específicos, instrucciones paso a paso para el estudiante, y criterios de evaluación observables), coherente con el indicador de logro.
 
-<b>Adaptabilidad:</b> Si el archivo no contiene algún dato necesario para que la ficha sea coherente con el indicador, pregúntamelo antes de entregar el resultado final.</pre>
+<b>Adaptabilidad:</b> Usa lenguaje claro y formal, dirigido a estudiantes de CETPRO, y ajusta la ficha según mi retroalimentación.</pre>
     <button class="copy" data-target="p1">Copiar prompt</button>
   </div>
 
@@ -160,11 +201,11 @@
     <p class="subt">Adjunta el sílabo del módulo en ChatGPT antes de enviar este prompt.</p>
     <pre class="prompt" id="p2"><b>Rol:</b> Actúa como especialista en diseño curricular de educación técnico-productiva (CETPRO), con experiencia en la familia productiva de Tecnologías de la Información.
 
-<b>Información:</b> Te adjunto el sílabo del módulo "Atención de incidentes y problemas de operatividad en el centro de cómputo". Lee el archivo y ubica, en la tabla de Actividades de Aprendizaje, una actividad correspondiente al indicador C2 I1.
+<b>Interacción:</b> Te adjunto el sílabo del módulo "Atención de incidentes y problemas de operatividad en el centro de cómputo". Lee el archivo y ubica, en la tabla de Actividades de Aprendizaje, una actividad correspondiente al indicador C2 I1. Si el archivo no contiene algún dato necesario para que la ficha sea coherente con el indicador, pregúntamelo antes de entregar el resultado final.
 
 <b>Tarea:</b> Genera la Ficha de Actividad completa para esa sesión (objetivo de aprendizaje, materiales/insumos específicos, instrucciones paso a paso para el estudiante, y criterios de evaluación observables), coherente con el indicador de logro.
 
-<b>Adaptabilidad:</b> Si el archivo no contiene algún dato necesario para que la ficha sea coherente con el indicador, pregúntamelo antes de entregar el resultado final.</pre>
+<b>Adaptabilidad:</b> Usa lenguaje claro y formal, dirigido a estudiantes de CETPRO, y ajusta la ficha según mi retroalimentación.</pre>
     <button class="copy" data-target="p2">Copiar prompt</button>
   </div>
 
@@ -200,6 +241,7 @@
         var sel = window.getSelection();
         sel.removeAllRanges();
         sel.addRange(range);
+        try { if (document.execCommand("copy")) { marked(); } } catch (e) {}
       }
     });
   });
