@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ejemplo 1 EducaTech IA</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: single-column mobile-first page, scanned via QR on a phone during the live workshop */
+  :root {
+    --bg: #ffffff;
+    --surface: #f4f6fb;
+    --fg: #1a2350;
+    --muted: #5b6584;
+    --accent: #f2660f;
+    --accent-ink: #ffffff;
+    --blue: #1e3aa8;
+    --line: #e2e6f2;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12162b;
+      --surface: #1b2140;
+      --fg: #eef0fa;
+      --muted: #a6adc9;
+      --accent: #ff8a3d;
+      --accent-ink: #1a1200;
+      --blue: #7f9bff;
+      --line: #2b3260;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12162b;
+    --surface: #1b2140;
+    --fg: #eef0fa;
+    --muted: #a6adc9;
+    --accent: #ff8a3d;
+    --accent-ink: #1a1200;
+    --blue: #7f9bff;
+    --line: #2b3260;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+    padding-inline: 20px;
+    padding-block: max(28px, env(safe-area-inset-top, 0px)) 48px;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+
+  header { margin-bottom: 28px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--blue); font-weight: 700; margin: 0 0 6px;
+  }
+  h1 {
+    font-family: "Poppins", "Inter", sans-serif;
+    font-weight: 700;
+    font-size: clamp(24px, 6vw, 32px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    text-wrap: balance;
+    color: var(--fg);
+  }
+  header p { margin: 0; color: var(--muted); font-size: 14.5px; line-height: 1.5; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .card h2 {
+    font-family: "Poppins", "Inter", sans-serif;
+    font-size: 18px; margin: 0 0 4px; color: var(--accent);
+  }
+  .card .subt { font-size: 13px; color: var(--muted); margin: 0 0 14px; }
+
+  .steps { margin: 0 0 4px; padding-left: 20px; font-size: 14px; line-height: 1.6; color: var(--fg); }
+  .steps li { margin-bottom: 6px; }
+  .steps a { color: var(--blue); font-weight: 600; }
+
+  dl.fields { margin: 0 0 14px; }
+  dl.fields div {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 9px 0; border-bottom: 1px solid var(--line);
+    font-size: 14px; line-height: 1.4;
+  }
+  dl.fields div:last-child { border-bottom: none; }
+  dl.fields dt { color: var(--muted); font-weight: 500; }
+  dl.fields dd { margin: 0; font-weight: 600; text-align: right; color: var(--fg); }
+
+  button.copy {
+    font: inherit; font-size: 13px; font-weight: 600;
+    color: var(--accent-ink); background: var(--accent);
+    border: none; border-radius: 999px;
+    padding: 9px 16px; cursor: pointer;
+  }
+  button.copy:active { opacity: 0.85; }
+  button.copy[data-copied="1"] { background: var(--blue); }
+
+  a.cta {
+    display: inline-block;
+    font-size: 14px; font-weight: 700; text-decoration: none;
+    color: var(--accent-ink); background: var(--accent);
+    border-radius: 999px; padding: 10px 18px; margin-top: 4px;
+  }
+
+  footer {
+    margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--line);
+    font-size: 12.5px; color: var(--muted); line-height: 1.6;
+  }
+  footer strong { color: var(--fg); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Grupo Horizonte Educa Perú &middot; Octubre 2026</p>
+    <h1>Ejemplo 1: planificación anual de primaria</h1>
+    <p>Datos para completar la herramienta Planificación Anual de EducaTech IA. EducaTech es una guía estructurada: no necesitas redactar un prompt, solo registrar estos datos.</p>
+  </header>
+
+  <div class="card">
+    <h2>Antes de empezar</h2>
+    <p class="subt">Cada docente se registra de forma individual.</p>
+    <ol class="steps">
+      <li>Abre <a href="https://educatech.pe/" target="_blank" rel="noopener">educatech.pe</a> (existen otras páginas con nombre parecido).</li>
+      <li>Si eres nuevo: Iniciar sesión, luego &ldquo;Eres nuevo, crea tu cuenta aquí&rdquo;. Se recomienda una cuenta Gmail.</li>
+      <li>Registra tus datos reales: nivel, ciclo, institución educativa y director. Los documentos se generan con estos datos.</li>
+      <li>Anota tu correo y tu contraseña.</li>
+    </ol>
+    <a class="cta" href="https://educatech.pe/" target="_blank" rel="noopener">Abrir EducaTech IA</a>
+  </div>
+
+  <div class="card">
+    <h2>Herramientas &rarr; Planificación Anual</h2>
+    <p class="subt">Datos del ejemplo. Cámbialos por los de tu aula.</p>
+    <dl class="fields" id="datos">
+      <div><dt>Año</dt><dd>2026</dd></div>
+      <div><dt>Grado</dt><dd>Cuarto</dd></div>
+      <div><dt>Área curricular</dt><dd>Todas (áreas integradas)</dd></div>
+      <div><dt>Sección</dt><dd>A</dd></div>
+      <div><dt>Tipo de unidad</dt><dd>Unidad de aprendizaje</dd></div>
+      <div><dt>Cantidad de unidades</dt><dd>8</dd></div>
+      <div><dt>Bimestres y fechas</dt><dd>Por defecto</dd></div>
+      <div><dt>Cantidad de estudiantes</dt><dd>17 (6 varones y 11 mujeres)</dd></div>
+    </dl>
+    <button class="copy" id="copiar" type="button">Copiar datos</button>
+  </div>
+
+  <div class="card">
+    <h2>Después de generar</h2>
+    <ol class="steps">
+      <li>Descarga el documento en Word para poder editarlo (logo, colores, formato).</li>
+      <li>Revisa y ajusta los títulos de unidad, competencias y capacidades a tu realidad. La revisión pedagógica es obligatoria.</li>
+      <li>Guarda el título de la unidad que vas a trabajar: se necesita para el siguiente ejemplo (unidad de aprendizaje).</li>
+    </ol>
+  </div>
+
+  <footer>
+    <strong>Créditos:</strong> cada herramienta consume créditos y la Planificación Anual usa 5. Las cuentas gratuitas tienen créditos limitados, por eso conviene generar solo lo necesario.
+  </footer>
+</div>
+
+<script>
+  var btn = document.getElementById('copiar');
+  function datosTexto() {
+    var rows = document.querySelectorAll('#datos div');
+    var out = [];
+    rows.forEach(function (r) {
+      out.push(r.querySelector('dt').textContent + ': ' + r.querySelector('dd').textContent);
+    });
+    return out.join('\n');
+  }
+  btn.addEventListener('click', function () {
+    var t = datosTexto();
+    function ok() {
+      btn.textContent = 'Copiado';
+      btn.setAttribute('data-copied', '1');
+      setTimeout(function () { btn.textContent = 'Copiar datos'; btn.removeAttribute('data-copied'); }, 1800);
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(t).then(ok, function () { fallback(t, ok); });
+      } else { fallback(t, ok); }
+    } catch (e) { fallback(t, ok); }
+  });
+  function fallback(t, ok) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); document.body.removeChild(ta); ok();
+    } catch (e) { /* sin portapapeles disponible */ }
+  }
+</script>
+</body>
+</html>
