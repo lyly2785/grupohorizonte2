@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ejemplo 1 EducaTech IA</title>
+<title>Ejemplos EducaTech IA</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500;600;700&display=swap">
@@ -120,6 +120,11 @@
     font-size: 12.5px; color: var(--muted); line-height: 1.6;
   }
   footer strong { color: var(--fg); }
+  pre.sit {
+    margin: 0 0 14px; padding: 12px 14px; background: var(--bg); border: 1px solid var(--line);
+    border-radius: 12px; font: 13.5px/1.55 "Inter", sans-serif; color: var(--fg);
+    white-space: pre-wrap; overflow-wrap: anywhere;
+  }
 </style>
 </head>
 <body>
@@ -127,12 +132,12 @@
 <div class="wrap">
   <header>
     <p class="eyebrow">Grupo Horizonte Educa Perú &middot; Octubre 2026</p>
-    <h1>Ejemplo 1: planificación anual de primaria</h1>
-    <p>Datos para completar la herramienta Planificación Anual de EducaTech IA. EducaTech es una guía estructurada: no necesitas redactar un prompt, solo registrar estos datos.</p>
+    <h1>Planificación anual y unidad de aprendizaje</h1>
+    <p>Datos de ejemplo de primaria para completar las herramientas Planificación Anual y Unidad de aprendizaje de EducaTech IA. EducaTech es una guía estructurada: no necesitas redactar un prompt, solo registrar estos datos.</p>
   </header>
 
   <div class="card">
-    <h2>Antes de empezar</h2>
+    <h2>Paso 1: Antes de empezar</h2>
     <p class="subt">Cada docente se registra de forma individual.</p>
     <ol class="steps">
       <li>Abre <a href="https://educatech.pe/" target="_blank" rel="noopener">educatech.pe</a> (existen otras páginas con nombre parecido).</li>
@@ -144,7 +149,7 @@
   </div>
 
   <div class="card">
-    <h2>Herramientas &rarr; Planificación Anual</h2>
+    <h2>Paso 2: Herramientas &rarr; Planificación Anual</h2>
     <p class="subt">Datos del ejemplo. Cámbialos por los de tu aula.</p>
     <dl class="fields" id="datos">
       <div><dt>Año</dt><dd>2026</dd></div>
@@ -164,38 +169,60 @@
     <ol class="steps">
       <li>Descarga el documento en Word para poder editarlo (logo, colores, formato).</li>
       <li>Revisa y ajusta los títulos de unidad, competencias y capacidades a tu realidad. La revisión pedagógica es obligatoria.</li>
-      <li>Guarda el título de la unidad que vas a trabajar: se necesita para el siguiente ejemplo (unidad de aprendizaje).</li>
+      <li>Copia el título de la unidad que vas a trabajar y su situación significativa (se generan en la planificación anual): los necesitas para el Paso 3.</li>
     </ol>
   </div>
 
+  <div class="card">
+    <h2>Paso 3: Unidad de aprendizaje</h2>
+    <p class="subt">Se crea a partir de la planificación anual. Datos del ejemplo; cámbialos por los de tu aula.</p>
+    <ol class="steps">
+      <li>En el resultado de la Planificación Anual, haz clic en &ldquo;Crear Unidad de Aprendizaje&rdquo;. También puedes ir a Herramientas y elegir Unidad de aprendizaje.</li>
+      <li>Completa los datos de la tabla.</li>
+      <li>Haz clic en generar y descarga el documento en Word.</li>
+    </ol>
+    <dl class="fields" id="datos-unidad">
+      <div><dt>Grado</dt><dd>Cuarto</dd></div>
+      <div><dt>Área curricular</dt><dd>Todas (áreas integradas)</dd></div>
+      <div><dt>Título de la unidad</dt><dd>Conocemos nuestra historia y valoramos la diversidad de la provincia de Requena</dd></div>
+      <div><dt>Duración</dt><dd>4 semanas</dd></div>
+      <div><dt>Cantidad de sesiones</dt><dd>40 (2 por día)</dd></div>
+    </dl>
+    <p class="subt" style="margin:0 0 6px"><strong>Situación significativa (ejemplo)</strong></p>
+    <pre class="sit" id="situacion">Requena, ubicada en Loreto, tiene una rica historia desde antes de la llegada de los españoles y es una gran fuente de biodiversidad de la Amazonía. Sin embargo, muchos niños no la conocen. Se busca promover en ellos el conocimiento, la reflexión y la valoración de estos temas.</pre>
+    <button class="copy" id="copiar-unidad" type="button">Copiar datos de la unidad</button>
+    <p class="subt" style="margin:14px 0 0">El título y la situación significativa los escribes tú: la herramienta no los inventa. Usa los de tu planificación anual y precísalos con tu localidad. En multigrado, elige el grado superior del ciclo y adáptalo. En secundaria elige tu área y ajusta la cantidad de sesiones a tu tiempo. Revisa el resultado antes de usarlo.</p>
+  </div>
+
   <footer>
-    <strong>Créditos:</strong> cada herramienta consume créditos y la Planificación Anual usa 5. Las cuentas gratuitas tienen créditos limitados, por eso conviene generar solo lo necesario.
+    <strong>Créditos:</strong> cada herramienta consume créditos y la Planificación Anual y la Unidad de aprendizaje usan 5 cada una. Las cuentas gratuitas tienen créditos limitados, por eso conviene generar solo lo necesario.
   </footer>
 </div>
 
 <script>
-  var btn = document.getElementById('copiar');
-  function datosTexto() {
-    var rows = document.querySelectorAll('#datos div');
+  function wire(btnId, getText, label) {
+    var btn = document.getElementById(btnId);
+    btn.addEventListener('click', function () {
+      var t = getText();
+      function ok() {
+        btn.textContent = 'Copiado';
+        btn.setAttribute('data-copied', '1');
+        setTimeout(function () { btn.textContent = label; btn.removeAttribute('data-copied'); }, 1800);
+      }
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(t).then(ok, function () { fallback(t, ok); });
+        } else { fallback(t, ok); }
+      } catch (e) { fallback(t, ok); }
+    });
+  }
+  function filas(id) {
     var out = [];
-    rows.forEach(function (r) {
+    document.querySelectorAll('#' + id + ' div').forEach(function (r) {
       out.push(r.querySelector('dt').textContent + ': ' + r.querySelector('dd').textContent);
     });
-    return out.join('\n');
+    return out;
   }
-  btn.addEventListener('click', function () {
-    var t = datosTexto();
-    function ok() {
-      btn.textContent = 'Copiado';
-      btn.setAttribute('data-copied', '1');
-      setTimeout(function () { btn.textContent = 'Copiar datos'; btn.removeAttribute('data-copied'); }, 1800);
-    }
-    try {
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(t).then(ok, function () { fallback(t, ok); });
-      } else { fallback(t, ok); }
-    } catch (e) { fallback(t, ok); }
-  });
   function fallback(t, ok) {
     try {
       var ta = document.createElement('textarea');
@@ -204,6 +231,10 @@
       document.execCommand('copy'); document.body.removeChild(ta); ok();
     } catch (e) { /* sin portapapeles disponible */ }
   }
+  wire('copiar', function () { return filas('datos').join('\n'); }, 'Copiar datos');
+  wire('copiar-unidad', function () {
+    return filas('datos-unidad').join('\n') + '\nSituación significativa: ' + document.getElementById('situacion').textContent;
+  }, 'Copiar datos de la unidad');
 </script>
 </body>
 </html>
